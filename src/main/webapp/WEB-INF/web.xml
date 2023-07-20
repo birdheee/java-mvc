@@ -4,12 +4,32 @@
   <welcome-file-list>
     <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
   </welcome-file-list>
+  
   <servlet>
-  	<servlet-name>classInfoServlet</servlet-name>
-  	<servlet-class>com.mvc.controller.classInfoServlet</servlet-class>
+  	<servlet-name>ClassInfoServlet</servlet-name>
+  	<servlet-class>com.mvc.controller.ClassInfoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>classInfoServlet</servlet-name>
+  	<servlet-name>ClassInfoServlet</servlet-name>
   	<url-pattern>/class-info/*</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CalcServlet</servlet-name>
+  	<servlet-class>com.mvc.controller.CalcServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CalcServlet</servlet-name>
+  	<url-pattern>/calc/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>LottoServlet</servlet-name>
+  	<servlet-class>com.mvc.controller.LottoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LottoServlet</servlet-name>
+  	<url-pattern>/lotto/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

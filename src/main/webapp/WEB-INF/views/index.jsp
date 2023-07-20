@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-안녕하세요~~~
+<a href="/calc">계산기</a><br>
+<a href="/lotto">로또 맞추기</a>
 </body>
 </html>
