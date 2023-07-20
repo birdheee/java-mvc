@@ -44,11 +44,9 @@ public class LottoServlet extends HttpServlet {
 			String[] nums = request.getParameterValues("num"); // 배열로 받음
 			// 몇개 맞췄는지 세기
 			int cnt = 0;
-			for(int i=0; i<lotto.size(); i++) {
-				for(int j=0; j<nums.length; j++) {
-					if(lotto.get(i).equals(nums[j])) {
-						cnt++;
-					}
+			for(String num : nums) {
+				if(lotto.contains(num)) {
+					cnt++;
 				}
 			}
 			request.setAttribute("cnt", cnt);
