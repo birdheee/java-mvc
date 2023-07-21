@@ -41,4 +41,21 @@
   	<url-pattern>/find/*</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>UserInfoServlet</servlet-name>
+  	<servlet-class>com.mvc.controller.UserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserInfoServlet</servlet-name>
+  	<url-pattern>/user-info/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>TestServlet</servlet-name>
+  	<servlet-class>com.mvc.controller.TestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TestServlet</servlet-name>
+  	<url-pattern>/test-info/*</url-pattern>
+  </servlet-mapping>
 </web-app>
