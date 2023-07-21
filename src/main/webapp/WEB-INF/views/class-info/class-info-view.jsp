@@ -8,21 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-Map<String, String> classInfo = (Map<String, String>)request.getAttribute("classInfo");
-%>
 <table border="1">
 	<tr>
 		<th>번호</th>
-		<td><%=classInfo.get("ciNum")%></td>
+		<td>${classInfo.ciNum}</td>
 	</tr>
 	<tr>
 		<th>이름</th>
-		<td><%=classInfo.get("ciName")%></td>
+		<td>${classInfo.ciName}</td>
 	</tr>
 	<tr>
 		<th>설명</th>
-		<td><%=classInfo.get("ciDesc")%></td>
+		<td>${classInfo.ciDesc}</td>
 	</tr>
 </table>
 </body>

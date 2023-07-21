@@ -8,25 +8,22 @@
 <title>유저 상세보기</title>
 </head>
 <body>
-<%
-Map<String, String> userInfo = (Map<String, String>)request.getAttribute("selectUserInfo");
-%>
 <table border="1">
 	<tr>
 		<th>번호</th>
-		<td><%=userInfo.get("uiNum") %></td>
+		<td>${userInfo.uiNum}</td>
 	</tr>
 	<tr>
 		<th>이름</th>
-		<td><%=userInfo.get("uiName") %></td>
+		<td>${userInfo.uiName}</td>
 	</tr>
 	<tr>
 		<th>아이디</th>
-		<td><%=userInfo.get("uiId") %></td>
+		<td>${userInfo.uiId}</td>
 	</tr>
 	<tr>
 		<th>패스워드</th>
-		<td><%=userInfo.get("uiPwd") %></td>
+		<td>${userInfo.uiPwd}</td>
 	</tr>
 </table>
 

@@ -24,12 +24,12 @@ public class UserInfoServlet extends HttpServlet {
 		
 		if("list".equals(uri)) {
 			List<Map<String, String>> userInfoList = uiRepo.selectUserInfoList();
-			request.setAttribute("selectUserInfoList", userInfoList);
+			request.setAttribute("userInfoList", userInfoList);
 			path += "user-info/list.jsp";
 		}else if("view".equals(uri)){
 			String uiNum = request.getParameter("uiNum");
 			Map<String, String> userInfo = uiRepo.selectUserInfo(uiNum);
-			request.setAttribute("selectUserInfo", userInfo);
+			request.setAttribute("userInfo", userInfo);
 			path += "user-info/view.jsp";
 		}else if("insert".equals(uri)) {
 			path += "user=info/insert.jsp";

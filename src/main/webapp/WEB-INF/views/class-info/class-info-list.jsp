@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,18 +16,13 @@
 		<th>이름</th>
 		<th>설명</th>
 	</tr>
-<%
-List<Map<String, String>> classInfoList = (List<Map<String, String>>)request.getAttribute("classInfoList");
-for(Map<String, String> classInfo : classInfoList){
-%>
+	<c:forEach items="${classInfoList}" var="classInfo">
 	<tr>
-		<td><%=classInfo.get("ciNum")%></td>
-		<td><a href="/class-info/view?ciNum=<%=classInfo.get("ciNum")%>"><%=classInfo.get("ciName")%></td>
-		<td><%=classInfo.get("ciDesc")%></td>
+		<td>${classInfo.ciNum}</td>
+		<td><a href="/class-info/view?ciNum=${classInfo.ciNum}">${classInfo.ciName}</td>
+		<td>${classInfo.ciDesc}</td>
 	</tr>
-<%	
-}
-%>
+	</c:forEach>
 </table>
 </body>
 </html>
