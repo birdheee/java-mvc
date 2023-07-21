@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>번호 찾기 결과</title>
 </head>
 <body>
-<a href="/calc">계산기</a><br>
-<a href="/lotto">로또 맞추기</a><br>
-<a href="/find">번호 찾기</a>
+<h3>결과</h3>
+<%= request.getAttribute("msg") %><br>
+틀린 횟수 : <%= request.getAttribute("cnt") %>
 </body>
 </html>

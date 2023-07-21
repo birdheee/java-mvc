@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>번호 찾기</title>
 </head>
 <body>
-<a href="/calc">계산기</a><br>
-<a href="/lotto">로또 맞추기</a><br>
-<a href="/find">번호 찾기</a>
+<h3>번호 찾기</h3>
+<form action="/find/check">
+	<input type="text" name="num">
+	<button>찾기</button>
+</form>
 </body>
 </html>
