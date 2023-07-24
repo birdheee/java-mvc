@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>유저 등록</title>
+<title>회원등록</title>
 </head>
 <body>
-<h3>유저 등록</h3>
+<h3>회원등록</h3>
+<form action="/user-info/insert" method="POST">
+	<input type="text" name="uiId" placeholder="아이디"><br>
+	<input type="password" name="uiPwd" placeholder="패스워드"><br>
+	<input type="text" name="uiName" placeholder="이름"><br>
+	<button>등록</button>
+</form>
 </body>
 </html>

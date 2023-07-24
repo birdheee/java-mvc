@@ -55,4 +55,20 @@ public class UserInfoRepository {
 		}
 		return null;
 	}
+	
+	public int insertUserInfo(Map<String, String> param) {
+		Connection con = DBCon.getCon();
+		String sql = "INSERT INTO USER_INFO(UI_ID, UI_PWD, UI_NAME)";
+		sql += " VALUES(?,?,?)";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, param.get("uiId"));
+			pstmt.setString(2, param.get("uiPwd"));
+			pstmt.setString(3, param.get("uiName"));
+			return pstmt.executeUpdate(); // result
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

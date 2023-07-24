@@ -9,6 +9,9 @@
 <body>
 <a href="/calc">계산기</a><br>
 <a href="/lotto">로또 맞추기</a><br>
-<a href="/find">번호 찾기</a>
+<a href="/find">번호 찾기</a><br>
+<a href="/user-info/list">회원 게시판</a><br>
+<a href="/movie-info/list">영화 게시판</a><br>
+<a href="/class-info/list">클래스 게시판</a>
 </body>
 </html>

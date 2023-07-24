@@ -51,7 +51,6 @@ public class MovieInfoRepository {
 				movieInfo.put("miGenre", rs.getString("MI_GENRE"));
 				movieInfo.put("miCredat", rs.getString("MI_CREDAT"));
 				movieInfo.put("miCnt", rs.getString("MI_CNT"));
-				return movieInfo;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -25,6 +25,9 @@
 		<td>${userInfo.uiPwd}</td>
 	</tr>
 	</c:forEach>
+	<tr>
+		<td colspan="4" align="right"><button onclick="location.href='/user-info/insert'">등록</button></td>
+	</tr>
 </table>
 </body>
 </html>
