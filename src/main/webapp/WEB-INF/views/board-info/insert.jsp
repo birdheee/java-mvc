@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>테스트 삭제</title>
+<title>Insert</title>
 </head>
 <body>
-<h3>테스트 삭제</h3>
+
 </body>
 </html>

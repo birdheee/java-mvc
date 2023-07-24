@@ -35,6 +35,9 @@ public class UserInfoServlet extends HttpServlet {
 		}else if("insert".equals(uri)) {
 			path += "user-info/insert.jsp";
 		}else if("update".equals(uri)) {
+			String uiNum = request.getParameter("uiNum");
+			Map<String, String> userInfo = uiRepo.selectUserInfo(uiNum);
+			request.setAttribute("userInfo", userInfo);
 			path += "user-info/update.jsp";
 		}else if("delete".equals(uri)) {
 			path += "user-info/delete.jsp";
@@ -59,7 +62,29 @@ public class UserInfoServlet extends HttpServlet {
 			request.setAttribute("msg", "회원등록 실패"); // 실패를 먼저 가정
 			request.setAttribute("url", "/user-info/insert");
 			if(result==1) { // 1이면 무조건 성공임
-				request.setAttribute("msg", "회원등록 완료");
+				request.setAttribute("msg", "회원등록 성공");
+				request.setAttribute("url", "/user-info/list");
+			}
+		}else if("update".equals(uri)) {
+			Map<String, String> param = new HashMap<>();
+			param.put("uiNum", request.getParameter("uiNum"));
+			param.put("uiId", request.getParameter("uiId"));
+			param.put("uiPwd", request.getParameter("uiPwd"));
+			param.put("uiName", request.getParameter("uiName"));
+			int result = uiRepo.updateUserInfo(param);
+			request.setAttribute("msg", "회원정보 수정 실패"); // 실패를 먼저 가정
+			request.setAttribute("url", "/user-info/update?uiNum=" + request.getParameter("uiNum"));
+			if(result==1) {
+				request.setAttribute("msg", "회원정보 수정 성공");
+				request.setAttribute("url", "/user-info/list");
+			}
+		}else if("delete".equals(uri)) {
+			String uiNum = request.getParameter("uiNum");
+			int result = uiRepo.deleteUserInfo(uiNum);
+			request.setAttribute("msg", "회원 삭제 실패");
+			request.setAttribute("url", "/user-info/view?uiNum=" + uiNum);
+			if(result==1) {
+				request.setAttribute("msg", "회원 삭제 성공");
 				request.setAttribute("url", "/user-info/list");
 			}
 		}

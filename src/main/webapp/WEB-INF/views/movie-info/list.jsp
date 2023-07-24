@@ -26,6 +26,9 @@
 		<td>${movieInfo.miCnt}</td>
 	</tr>
 	</c:forEach>
+	<tr>
+		<td colspan="5" align="right"><button onclick="location.href='/movie-info/insert'">등록</button></td>
+	</tr>
 </table>
 </body>
 </html>

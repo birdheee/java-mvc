@@ -71,4 +71,34 @@ public class UserInfoRepository {
 		}
 		return 0;
 	}
+	
+	public int updateUserInfo(Map<String, String> param) {
+		Connection con = DBCon.getCon();
+		String sql = "UPDATE USER_INFO";
+		sql += " SET UI_ID=?, UI_PWD=?, UI_NAME=? WHERE UI_NUM=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, param.get("uiId"));
+			pstmt.setString(2, param.get("uiPwd"));
+			pstmt.setString(3, param.get("uiName"));
+			pstmt.setString(4, param.get("uiNum"));
+			return pstmt.executeUpdate(); // result
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public int deleteUserInfo(String uiNum) {
+		Connection con = DBCon.getCon();
+		String sql = "DELETE FROM USER_INFO WHERE UI_NUM=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, uiNum);
+			return pstmt.executeUpdate(); // result
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

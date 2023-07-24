@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>과목 리스트</title>
 </head>
 <body>
 <table border="1">
@@ -23,6 +23,9 @@
 		<td>${classInfo.ciDesc}</td>
 	</tr>
 	</c:forEach>
+	<tr>
+		<td colspan="3" align="right"><button onclick="location.href='/class-info/insert'">등록</button></td>
+	</tr>
 </table>
 </body>
 </html>

@@ -51,20 +51,20 @@
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>TestServlet</servlet-name>
-  	<servlet-class>com.mvc.controller.TestServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>TestServlet</servlet-name>
-  	<url-pattern>/test-info/*</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
   	<servlet-name>MovieInfoServlet</servlet-name>
   	<servlet-class>com.mvc.controller.MovieInfoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>MovieInfoServlet</servlet-name>
   	<url-pattern>/movie-info/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>BoardInfoServlet</servlet-name>
+  	<servlet-class>com.mvc.controller.BoardInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BoardInfoServlet</servlet-name>
+  	<url-pattern>/board-info/*</url-pattern>
   </servlet-mapping>
 </web-app>

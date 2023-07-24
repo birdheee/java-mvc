@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>유저 수정</title>
+<title>회원 정보 수정</title>
 </head>
 <body>
-<h3>유저 수정</h3>
+<h3>회원 정보 수정</h3>
+<form action="/user-info/update" method="POST">
+	<input type="hidden" name="uiNum" value="${userInfo.uiNum}">
+	<input type="text" name="uiId" placeholder="${userInfo.uiId}"><br>
+	<input type="password" name="uiPwd" placeholder="패스워드"><br>
+	<input type="text" name="uiName" placeholder="${userInfo.uiName}"><br>
+	<button>수정</button>
+</form>
 </body>
 </html>

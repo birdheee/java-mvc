@@ -54,4 +54,19 @@ public class ClassInfoRepository {
 		}
 		return null;
 	}
+	
+	public int insertClassInfo(Map<String, String> param) {
+		Connection con = DBCon.getCon();
+		String sql = "INSERT INTO CLASS_INFO(CI_NAME, CI_DESC)";
+		sql += " VALUES(?,?)";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, param.get("ciName"));
+			pstmt.setString(2, param.get("ciDesc"));
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

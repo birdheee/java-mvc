@@ -1,7 +1,6 @@
 package com.mvc.repository;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,5 +55,23 @@ public class MovieInfoRepository {
 			e.printStackTrace();
 		}
 		return movieInfo;
+	}
+	
+	public int insertMovieInfo(Map<String, String> param) {
+		Connection con = DBCon.getCon();
+		String sql = "INSERT INFO MOVIE_INFO(MI_TITLE, MI_GENRE, MI_CREDAT, MI_CNT, MI_CONTENT)";
+		sql += " VALUES(?,?,?,?,?)";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, param.get("miTitle"));
+			pstmt.setString(2, param.get("miGenre"));
+			pstmt.setString(3, param.get("miCredat"));
+			pstmt.setString(4, param.get("miCnt"));
+			pstmt.setString(5, param.get("miContent"));
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

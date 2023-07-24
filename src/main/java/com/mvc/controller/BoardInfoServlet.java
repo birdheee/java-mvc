@@ -1,33 +1,38 @@
 package com.mvc.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class TestServlet extends HttpServlet {
+import com.mvc.repository.BoardInfoRepository;
+
+public class BoardInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private BoardInfoRepository biRepo = new BoardInfoRepository();
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();
 		int idx = uri.lastIndexOf("/");
 		uri = uri.substring(idx+1);
 		String path = "/WEB-INF/views/";
-		
 		if("list".equals(uri)) {
-			path += "test-info/list.jsp";
+			List<Map<String, String>> boardInfoList = biRepo.selectBoardInfoList();
+			request.setAttribute("boardInfoList", boardInfoList);
+			path += "board-info/list.jsp";
 		}else if("view".equals(uri)) {
-			path += "test-info/view.jsp";
+			path += "board-info/view.jsp";
 		}else if("insert".equals(uri)) {
-			path += "test-info/insert.jsp";
+			path += "board-info/insert.jsp";
 		}else if("update".equals(uri)) {
-			path += "test-info/update.jsp";
+			path += "board-info/update.jsp";
 		}else if("delete".equals(uri)) {
-			path += "test-info/delete.jsp";
+			path += "board-info/delete.jsp";
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);

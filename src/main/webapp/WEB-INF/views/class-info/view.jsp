@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>과목 상세보기</title>
 </head>
 <body>
 <table border="1">

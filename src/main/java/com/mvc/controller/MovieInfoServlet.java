@@ -1,6 +1,7 @@
 package com.mvc.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,5 +41,28 @@ public class MovieInfoServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
 	}
-
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String uri = request.getRequestURI();
+		int idx = uri.lastIndexOf("/");
+		uri = uri.substring(idx+1);
+		String path = "/WEB-INF/views/common/msg.jsp";
+		if("insert".equals(uri)) {
+			Map<String, String> param = new HashMap<>();
+			param.put("miTitle", request.getParameter("miTitle"));
+			param.put("miGenre", request.getParameter("miGenre"));
+			param.put("miCredat", request.getParameter("miCredat"));
+			param.put("miCnt", request.getParameter("miCnt"));
+			param.put("miContent", request.getParameter("miContent"));
+			int result = miRepo.insertMovieInfo(param);
+			request.setAttribute("msg", "등록 실패");
+			request.setAttribute("url", "/movie-info/insert");
+			if(result==1) {
+				request.setAttribute("msg", "등록 성공");
+				request.setAttribute("url", "/movie-info/list");
+			}
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(path);
+	}
 }

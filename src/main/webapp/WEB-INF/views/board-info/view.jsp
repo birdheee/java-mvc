@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>테스트 등록</title>
+<title>Insert title here</title>
 </head>
 <body>
-<h3>테스트 등록</h3>
+<table border="1">
+	<tr>
+		<th>번호</th>
+	</tr>
+</table>
 </body>
 </html>
