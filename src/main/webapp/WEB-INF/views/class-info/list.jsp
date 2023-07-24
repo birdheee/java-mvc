@@ -10,6 +10,7 @@
 <title>과목 리스트</title>
 </head>
 <body>
+<h3>과목 리스트</h3>
 <table border="1">
 	<tr>
 		<th>번호</th>

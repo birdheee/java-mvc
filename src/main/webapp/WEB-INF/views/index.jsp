@@ -12,6 +12,7 @@
 <a href="/find">번호 찾기</a><br>
 <a href="/user-info/list">회원 게시판</a><br>
 <a href="/movie-info/list">영화 게시판</a><br>
-<a href="/class-info/list">클래스 게시판</a>
+<a href="/class-info/list">클래스 게시판</a><br>
+<a href="/board-info/list">자유 게시판</a>
 </body>
 </html>

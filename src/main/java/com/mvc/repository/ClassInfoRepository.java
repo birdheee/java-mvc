@@ -69,4 +69,32 @@ public class ClassInfoRepository {
 		}
 		return 0;
 	}
+	
+	public int updateClassInfo(Map<String, String> param) {
+		Connection con = DBCon.getCon();
+		String sql = "UPDATE CLASS_INFO SET CI_NAME=?, CI_DESC=? WHERE CI_NUM=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, param.get("ciName"));
+			pstmt.setString(2, param.get("ciDesc"));
+			pstmt.setString(3, param.get("ciNum"));
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public int deleteClassInfo(String ciNum) {
+		Connection con = DBCon.getCon();
+		String sql = "DELETE FROM CLASS_INFO WHERE CI_NUM=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, ciNum);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

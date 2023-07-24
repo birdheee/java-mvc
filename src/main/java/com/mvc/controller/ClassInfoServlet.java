@@ -33,6 +33,13 @@ public class ClassInfoServlet extends HttpServlet {
 			path += "class-info/view.jsp";
 		}else if("insert".equals(uri)) {
 			path += "class-info/insert.jsp";
+		}else if("update".equals(uri)) {
+			String ciNum = request.getParameter("ciNum");
+			Map<String, String> classInfo = ciRepo.selectClassInfo(ciNum);
+			request.setAttribute("classInfo", classInfo);
+			path += "class-info/update.jsp";
+		}else if("delete".equals(uri)) {
+			path += "class-info/delete.jsp";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
@@ -55,7 +62,30 @@ public class ClassInfoServlet extends HttpServlet {
 				request.setAttribute("msg", "과목등록 성공");
 				request.setAttribute("url", "/class-info/list");
 			}
+		}else if("update".equals(uri)) {
+			Map<String, String> param = new HashMap<>();
+			param.put("ciNum", request.getParameter("ciNum"));
+			param.put("ciName", request.getParameter("ciName"));
+			param.put("ciDesc", request.getParameter("ciDesc"));
+			int result = ciRepo.updateClassInfo(param);
+			request.setAttribute("msg", "과목정보 수정 실패");
+			request.setAttribute("url", "/class-info/update?ciNum=" + request.getParameter("ciNum"));
+			if(result==1) {
+				request.setAttribute("msg", "과목정보 수정 성공");
+				request.setAttribute("url", "/class-info/list");
+			}
+		}else if("delete".equals(uri)) {
+			String ciNum = request.getParameter("ciNum");
+			int result = ciRepo.deleteClassInfo(ciNum);
+			request.setAttribute("msg", "과목 삭제 실패");
+			request.setAttribute("url", "/class-info/view?ciNum=" + ciNum);
+			if(result==1) {
+				request.setAttribute("msg", "과목 삭제 성공");
+				request.setAttribute("url", "/class-info/list");
+			}
 		}
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
 	}

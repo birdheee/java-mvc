@@ -76,7 +76,7 @@ public class UserInfoServlet extends HttpServlet {
 			request.setAttribute("url", "/user-info/update?uiNum=" + request.getParameter("uiNum"));
 			if(result==1) {
 				request.setAttribute("msg", "회원정보 수정 성공");
-				request.setAttribute("url", "/user-info/list");
+				request.setAttribute("url", "/user-info/view?uiNum=" + request.getParameter("uiNum"));
 			}
 		}else if("delete".equals(uri)) {
 			String uiNum = request.getParameter("uiNum");
