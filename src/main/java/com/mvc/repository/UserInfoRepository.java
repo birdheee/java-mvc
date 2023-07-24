@@ -10,21 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mvc.common.DBCon;
+
 public class UserInfoRepository {
-	String driverName="org.mariadb.jdbc.Driver";
-	String url = "jdbc:mariadb://localhost:3306/kd";
-	String root = "root";
-	String pwd = "kd1824java";
 	
 	public List<Map<String, String>> selectUserInfoList(){
 		List<Map<String, String>> userInfoList = new ArrayList<>();
 		try {
-			Class.forName(driverName);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			Connection con = DriverManager.getConnection(url, root, pwd);
+			Connection con = DBCon.getCon();
 			String sql = "SELECT * FROM USER_INFO WHERE 1=1 ";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
@@ -45,12 +38,7 @@ public class UserInfoRepository {
 	public Map<String, String> selectUserInfo(String uiNum){
 		Map<String, String> userInfo = new HashMap<>();
 		try {
-			Class.forName(driverName);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			Connection con = DriverManager.getConnection(url, root, pwd);
+			Connection con = DBCon.getCon();
 			String sql = "SELECT * FROM USER_INFO WHERE 1=1 AND UI_NUM=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, uiNum);
