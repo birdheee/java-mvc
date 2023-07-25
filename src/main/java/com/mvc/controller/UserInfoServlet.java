@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mvc.common.CommonView;
 import com.mvc.repository.UserInfoRepository;
 
 public class UserInfoServlet extends HttpServlet {
@@ -18,41 +19,25 @@ public class UserInfoServlet extends HttpServlet {
 	UserInfoRepository uiRepo = new UserInfoRepository();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uri = request.getRequestURI();
-		int idx = uri.lastIndexOf("/");
-		uri = uri.substring(idx+1);
-		String path = "/WEB-INF/views/";
-		
+		String uri = CommonView.getCmd(request);
 		if("list".equals(uri)) {
 			List<Map<String, String>> userInfoList = uiRepo.selectUserInfoList();
 			request.setAttribute("userInfoList", userInfoList);
-			path += "user-info/list.jsp";
 		}else if("view".equals(uri)){
 			String uiNum = request.getParameter("uiNum");
 			Map<String, String> userInfo = uiRepo.selectUserInfo(uiNum);
 			request.setAttribute("userInfo", userInfo);
-			path += "user-info/view.jsp";
-		}else if("insert".equals(uri)) {
-			path += "user-info/insert.jsp";
 		}else if("update".equals(uri)) {
 			String uiNum = request.getParameter("uiNum");
 			Map<String, String> userInfo = uiRepo.selectUserInfo(uiNum);
 			request.setAttribute("userInfo", userInfo);
-			path += "user-info/update.jsp";
-		}else if("delete".equals(uri)) {
-			path += "user-info/delete.jsp";
 		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher(path);
-		rd.forward(request, response);
+		CommonView.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); // 한글 깨짐 방지
-		String uri = request.getRequestURI();
-		int idx = uri.lastIndexOf("/");
-		uri = uri.substring(idx+1);
-		String path = "/WEB-INF/views/common/msg.jsp";
+		String uri = CommonView.getCmd(request);
 		if("insert".equals(uri)) {
 			Map<String, String> param = new HashMap<>();
 			param.put("uiId", request.getParameter("uiId"));
@@ -88,8 +73,7 @@ public class UserInfoServlet extends HttpServlet {
 				request.setAttribute("url", "/user-info/list");
 			}
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(path);
-		rd.forward(request, response);
+		CommonView.goMessagePage(request, response);
 	}
 
 }
